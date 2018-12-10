@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="./../../WEB-INF/templates/plantilla.xhtml">
+        <ui:define name="content">
+            <h:outputLabel value="Muestra Todos los Empleados" style="font-size: 18dp"/>
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPeempEmpleaEmpty}" rendered="#{peempEmpleaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{peempEmpleaController.items.rowCount > 0}">
+                    <h:outputText value="#{peempEmpleaController.pagination.pageFirstItem + 1}..#{peempEmpleaController.pagination.pageLastItem + 1}/#{peempEmpleaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{peempEmpleaController.previous}" value="#{bundle.Previous} #{peempEmpleaController.pagination.pageSize}" rendered="#{peempEmpleaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{peempEmpleaController.next}" value="#{bundle.Next} #{peempEmpleaController.pagination.pageSize}" rendered="#{peempEmpleaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{peempEmpleaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+  
+                        
+                       
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nombre Empleado"/>
+                            </f:facet>
+                            <h:outputText value="#{item.peempApelli} #{item.peempNombre}"/>
+                        </h:column>
+  
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cédula"/>
+                            </f:facet>
+                            <h:outputText value="#{item.peempCedula}"/>
+                        </h:column>
+                       
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Teléfono"/>
+                            </f:facet>
+                            <h:outputText value="#{item.peempTelefo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Correo Electrónico"/>
+                            </f:facet>
+                            <h:outputText value="#{item.peempEmail}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{peempEmpleaController.prepareView}" value="Ver Detalles"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{peempEmpleaController.prepareEdit}" value="Editar"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{peempEmpleaController.destroy}" value="Eliminar"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{peempEmpleaController.prepareCreate}" value="Crear Nuevo Empleado"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

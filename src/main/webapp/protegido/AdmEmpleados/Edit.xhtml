@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="./../../WEB-INF/templates/plantilla.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPeempEmpleaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="sexo" value="Sexo: " />
+                    <p:selectOneMenu id="sexo" value="#{peempEmpleaController.selected.pesexCodigo}" style="width:250px">
+                        <f:selectItem itemLabel="Seleccione el Sexo" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{peempEmpleaController.mapSexo}" />
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="estCivil" value="Estado Civil: " />
+                    <p:selectOneMenu id="estCivil" value="#{peempEmpleaController.selected.peescCodigo}" style="width:250px">
+                        <f:selectItem itemLabel="Seleccione el Estado Civil" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{peempEmpleaController.mapEstCivil}" />
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="depar" value="Departamento: " />
+                    <p:selectOneMenu id="depar" value="#{peempEmpleaController.selected.pedepCodigo}" style="width:250px">
+                        <f:selectItem itemLabel="Seleccione el Departamento" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{peempEmpleaController.mapDepartamento}" />
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="cargo" value="Cargo: " />
+                    <p:selectOneMenu id="cargo" value="#{peempEmpleaController.selected.pecarCodigo}" style="width:250px">
+                        <f:selectItem itemLabel="Seleccione el Cargo" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{peempEmpleaController.mapCargo}" />
+                    </p:selectOneMenu>
+
+                    <h:outputLabel value="#{bundle.EditPeempEmpleaLabel_pedirCodigo}" for="pedirCodigo" />
+                    <h:inputText id="pedirCodigo" value="#{peempEmpleaController.selected.pedirCodigo}" title="#{bundle.EditPeempEmpleaTitle_pedirCodigo}" required="true" requiredMessage="#{bundle.EditPeempEmpleaRequiredMessage_pedirCodigo}"/>
+                    <p:outputLabel value="Apellidos: " for="peempApelli" />
+                    <p:inputText id="peempApelli" value="#{peempEmpleaController.selected.peempApelli}" title="#{bundle.EditPeempEmpleaTitle_peempApelli}" required="true" requiredMessage="#{bundle.EditPeempEmpleaRequiredMessage_peempApelli}"/>
+                    <p:outputLabel value="Nombres: " for="peempNombre" />
+                    <p:inputText id="peempNombre" value="#{peempEmpleaController.selected.peempNombre}" title="#{bundle.EditPeempEmpleaTitle_peempNombre}" required="true" requiredMessage="#{bundle.EditPeempEmpleaRequiredMessage_peempNombre}"/>
+                    <p:outputLabel value="Cédula: " for="peempCedula" />
+                    <p:inputText id="peempCedula" value="#{peempEmpleaController.selected.peempCedula}" title="#{bundle.EditPeempEmpleaTitle_peempCedula}" />
+                    <p:outputLabel value="Pasaporte: " for="peempPasapo" />
+                    <p:inputText id="peempPasapo" value="#{peempEmpleaController.selected.peempPasapo}" title="#{bundle.EditPeempEmpleaTitle_peempPasapo}" />
+                    <p:outputLabel value="RUC: " for="peempRuc" />
+                    <p:inputText id="peempRuc" value="#{peempEmpleaController.selected.peempRuc}" title="#{bundle.EditPeempEmpleaTitle_peempRuc}" />
+                    <p:outputLabel value="Fecha de Nacimiento: " for="peempFenaci" />
+                    <p:calendar id="peempFenaci" value="#{peempEmpleaController.selected.peempFenaci}"  required="true" requiredMessage="#{bundle.EditPeempEmpleaRequiredMessage_peempFenaci}" style="width:250px">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+                    <p:outputLabel value="Fecha de Ingreso: " for="peempFeingr" />
+                    <p:calendar id="peempFeingr" value="#{peempEmpleaController.selected.peempFeingr}" title="#{bundle.EditPeempEmpleaTitle_peempFeingr}" required="true" requiredMessage="#{bundle.EditPeempEmpleaRequiredMessage_peempFeingr}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar >
+                    <p:outputLabel value="Fecha de Salida: " for="peempFesali" />
+                    <p:calendar  id="peempFesali" value="#{peempEmpleaController.selected.peempFesali}" title="#{bundle.EditPeempEmpleaTitle_peempFesali}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar >
+
+                    <p:outputLabel value="Discapacidad: " for="peempDiscapa" />
+                    <p:selectOneMenu id="peempDiscapa" value="#{peempEmpleaController.selected.peempDiscapa}" style="width:250px">
+                        <f:selectItem itemLabel="Seleccione el Estado Civil" itemValue="" noSelectionOption="false" />
+                        <f:selectItems value="#{peempEmpleaController.mapDiscapacidad}" />
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Cargas Familiares: " for="peempCarfam" />
+                    <p:inputNumber id="peempCarfam" value="#{peempEmpleaController.selected.peempCarfam}"  required="true" requiredMessage="#{bundle.EditPeempEmpleaRequiredMessage_peempCarfam}" decimalPlaces="0" minValue="0" maxValue="100"/>
+
+                    <p:outputLabel value="Teléfono: " for="peempTelefo" />
+                    <p:inputText id="peempTelefo" value="#{peempEmpleaController.selected.peempTelefo}" title="#{bundle.EditPeempEmpleaTitle_peempTelefo}" />
+                    <p:outputLabel value="Correo Electrónico: " for="peempEmail" />
+                    <p:inputText id="peempEmail" value="#{peempEmpleaController.selected.peempEmail}" title="#{bundle.EditPeempEmpleaTitle_peempEmail}" />
+
+
+                    <p:outputLabel value="Estado: " for="peempEstado" />
+                    <p:selectOneMenu id="peempEstado" value="#{peempEmpleaController.selected.peempEstado}" style="width:250px">
+                        <f:selectItem itemLabel="Seleccione el Estado Civil" itemValue="" noSelectionOption="false" />
+                        <f:selectItems value="#{peempEmpleaController.mapEstado}" />
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <br />
+
+                <p:commandButton action="#{peempEmpleaController.update}" value="#{bundle.EditPeempEmpleaSaveLink}"/>
+                <p:commandButton action="View" value="Ver Detalles"/>
+                <p:commandButton action="#{peempEmpleaController.prepareList}" value="#{bundle.EditPeempEmpleaShowAllLink}" immediate="true"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

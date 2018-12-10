@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPeempEmpleaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_pesexCodigo}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.pesexCodigo}" title="#{bundle.ViewPeempEmpleaTitle_pesexCodigo}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peescCodigo}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peescCodigo}" title="#{bundle.ViewPeempEmpleaTitle_peescCodigo}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_pedepCodigo}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.pedepCodigo}" title="#{bundle.ViewPeempEmpleaTitle_pedepCodigo}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_pecarCodigo}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.pecarCodigo}" title="#{bundle.ViewPeempEmpleaTitle_pecarCodigo}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_pedirCodigo}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.pedirCodigo}" title="#{bundle.ViewPeempEmpleaTitle_pedirCodigo}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempApelli}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempApelli}" title="#{bundle.ViewPeempEmpleaTitle_peempApelli}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempNombre}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempNombre}" title="#{bundle.ViewPeempEmpleaTitle_peempNombre}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempCedula}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempCedula}" title="#{bundle.ViewPeempEmpleaTitle_peempCedula}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempPasapo}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempPasapo}" title="#{bundle.ViewPeempEmpleaTitle_peempPasapo}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempRuc}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempRuc}" title="#{bundle.ViewPeempEmpleaTitle_peempRuc}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempFenaci}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempFenaci}" title="#{bundle.ViewPeempEmpleaTitle_peempFenaci}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempFeingr}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempFeingr}" title="#{bundle.ViewPeempEmpleaTitle_peempFeingr}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempFesali}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempFesali}" title="#{bundle.ViewPeempEmpleaTitle_peempFesali}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempDiscapa}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempDiscapa}" title="#{bundle.ViewPeempEmpleaTitle_peempDiscapa}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempCarfam}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempCarfam}" title="#{bundle.ViewPeempEmpleaTitle_peempCarfam}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempCodigo}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempCodigo}" title="#{bundle.ViewPeempEmpleaTitle_peempCodigo}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempTelefo}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempTelefo}" title="#{bundle.ViewPeempEmpleaTitle_peempTelefo}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempEmail}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempEmail}" title="#{bundle.ViewPeempEmpleaTitle_peempEmail}"/>
+                    <h:outputText value="#{bundle.ViewPeempEmpleaLabel_peempEstado}"/>
+                    <h:outputText value="#{peempEmpleaController.selected.peempEstado}" title="#{bundle.ViewPeempEmpleaTitle_peempEstado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{peempEmpleaController.destroyAndView}" value="#{bundle.ViewPeempEmpleaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPeempEmpleaEditLink}"/>
+                <br />
+                <h:commandLink action="#{peempEmpleaController.prepareCreate}" value="#{bundle.ViewPeempEmpleaCreateLink}" />
+                <br />
+                <h:commandLink action="#{peempEmpleaController.prepareList}" value="#{bundle.ViewPeempEmpleaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPeempEmpleaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

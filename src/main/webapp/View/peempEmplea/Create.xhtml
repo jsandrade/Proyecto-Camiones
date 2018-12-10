@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePeempEmpleaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_pesexCodigo}" for="pesexCodigo" />
+                    <h:inputText id="pesexCodigo" value="#{peempEmpleaController.selected.pesexCodigo}" title="#{bundle.CreatePeempEmpleaTitle_pesexCodigo}" required="true" requiredMessage="#{bundle.CreatePeempEmpleaRequiredMessage_pesexCodigo}"/>
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peescCodigo}" for="peescCodigo" />
+                    <h:inputText id="peescCodigo" value="#{peempEmpleaController.selected.peescCodigo}" title="#{bundle.CreatePeempEmpleaTitle_peescCodigo}" required="true" requiredMessage="#{bundle.CreatePeempEmpleaRequiredMessage_peescCodigo}"/>
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_pedepCodigo}" for="pedepCodigo" />
+                    <h:inputText id="pedepCodigo" value="#{peempEmpleaController.selected.pedepCodigo}" title="#{bundle.CreatePeempEmpleaTitle_pedepCodigo}" required="true" requiredMessage="#{bundle.CreatePeempEmpleaRequiredMessage_pedepCodigo}"/>
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_pecarCodigo}" for="pecarCodigo" />
+                    <h:inputText id="pecarCodigo" value="#{peempEmpleaController.selected.pecarCodigo}" title="#{bundle.CreatePeempEmpleaTitle_pecarCodigo}" required="true" requiredMessage="#{bundle.CreatePeempEmpleaRequiredMessage_pecarCodigo}"/>
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_pedirCodigo}" for="pedirCodigo" />
+                    <h:inputText id="pedirCodigo" value="#{peempEmpleaController.selected.pedirCodigo}" title="#{bundle.CreatePeempEmpleaTitle_pedirCodigo}" required="true" requiredMessage="#{bundle.CreatePeempEmpleaRequiredMessage_pedirCodigo}"/>
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempApelli}" for="peempApelli" />
+                    <h:inputText id="peempApelli" value="#{peempEmpleaController.selected.peempApelli}" title="#{bundle.CreatePeempEmpleaTitle_peempApelli}" required="true" requiredMessage="#{bundle.CreatePeempEmpleaRequiredMessage_peempApelli}"/>
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempNombre}" for="peempNombre" />
+                    <h:inputText id="peempNombre" value="#{peempEmpleaController.selected.peempNombre}" title="#{bundle.CreatePeempEmpleaTitle_peempNombre}" required="true" requiredMessage="#{bundle.CreatePeempEmpleaRequiredMessage_peempNombre}"/>
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempCedula}" for="peempCedula" />
+                    <h:inputText id="peempCedula" value="#{peempEmpleaController.selected.peempCedula}" title="#{bundle.CreatePeempEmpleaTitle_peempCedula}" />
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempPasapo}" for="peempPasapo" />
+                    <h:inputText id="peempPasapo" value="#{peempEmpleaController.selected.peempPasapo}" title="#{bundle.CreatePeempEmpleaTitle_peempPasapo}" />
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempRuc}" for="peempRuc" />
+                    <h:inputText id="peempRuc" value="#{peempEmpleaController.selected.peempRuc}" title="#{bundle.CreatePeempEmpleaTitle_peempRuc}" />
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempFenaci}" for="peempFenaci" />
+                    <h:inputText id="peempFenaci" value="#{peempEmpleaController.selected.peempFenaci}" title="#{bundle.CreatePeempEmpleaTitle_peempFenaci}" required="true" requiredMessage="#{bundle.CreatePeempEmpleaRequiredMessage_peempFenaci}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempFeingr}" for="peempFeingr" />
+                    <h:inputText id="peempFeingr" value="#{peempEmpleaController.selected.peempFeingr}" title="#{bundle.CreatePeempEmpleaTitle_peempFeingr}" required="true" requiredMessage="#{bundle.CreatePeempEmpleaRequiredMessage_peempFeingr}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempFesali}" for="peempFesali" />
+                    <h:inputText id="peempFesali" value="#{peempEmpleaController.selected.peempFesali}" title="#{bundle.CreatePeempEmpleaTitle_peempFesali}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempDiscapa}" for="peempDiscapa" />
+                    <h:inputText id="peempDiscapa" value="#{peempEmpleaController.selected.peempDiscapa}" title="#{bundle.CreatePeempEmpleaTitle_peempDiscapa}" required="true" requiredMessage="#{bundle.CreatePeempEmpleaRequiredMessage_peempDiscapa}"/>
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempCarfam}" for="peempCarfam" />
+                    <h:inputText id="peempCarfam" value="#{peempEmpleaController.selected.peempCarfam}" title="#{bundle.CreatePeempEmpleaTitle_peempCarfam}" required="true" requiredMessage="#{bundle.CreatePeempEmpleaRequiredMessage_peempCarfam}"/>
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempCodigo}" for="peempCodigo" />
+                    <h:inputText id="peempCodigo" value="#{peempEmpleaController.selected.peempCodigo}" title="#{bundle.CreatePeempEmpleaTitle_peempCodigo}" required="true" requiredMessage="#{bundle.CreatePeempEmpleaRequiredMessage_peempCodigo}"/>
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempTelefo}" for="peempTelefo" />
+                    <h:inputText id="peempTelefo" value="#{peempEmpleaController.selected.peempTelefo}" title="#{bundle.CreatePeempEmpleaTitle_peempTelefo}" />
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempEmail}" for="peempEmail" />
+                    <h:inputText id="peempEmail" value="#{peempEmpleaController.selected.peempEmail}" title="#{bundle.CreatePeempEmpleaTitle_peempEmail}" />
+                    <h:outputLabel value="#{bundle.CreatePeempEmpleaLabel_peempEstado}" for="peempEstado" />
+                    <h:inputText id="peempEstado" value="#{peempEmpleaController.selected.peempEstado}" title="#{bundle.CreatePeempEmpleaTitle_peempEstado}" required="true" requiredMessage="#{bundle.CreatePeempEmpleaRequiredMessage_peempEstado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{peempEmpleaController.create}" value="#{bundle.CreatePeempEmpleaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{peempEmpleaController.prepareList}" value="#{bundle.CreatePeempEmpleaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePeempEmpleaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
