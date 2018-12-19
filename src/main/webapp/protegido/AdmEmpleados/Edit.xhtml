@@ -6,16 +6,19 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="./../../WEB-INF/templates/plantilla.xhtml">
+    <ui:composition template="./../../WEB-INF/templates/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.EditPeempEmpleaTitle}"></h:outputText>
         </ui:define>
         <ui:define name="content">
+            <br/>
+            <h:outputLabel value="Editar Empleado" style="font-size: 2em"/>
+            <br/>
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="4" style="width: 80%;">
                     <p:outputLabel for="sexo" value="Sexo: " />
                     <p:selectOneMenu id="sexo" value="#{peempEmpleaController.selected.pesexCodigo}" style="width:250px">
                         <f:selectItem itemLabel="Seleccione el Sexo" itemValue="" noSelectionOption="true" />
@@ -87,10 +90,13 @@
                     </p:selectOneMenu>
                 </h:panelGrid>
                 <br />
-
-                <p:commandButton action="#{peempEmpleaController.update}" value="#{bundle.EditPeempEmpleaSaveLink}"/>
-                <p:commandButton action="View" value="Ver Detalles"/>
-                <p:commandButton action="#{peempEmpleaController.prepareList}" value="#{bundle.EditPeempEmpleaShowAllLink}" immediate="true"/>
+                <h:commandLink action="#{peempEmpleaController.update}" value="#{bundle.EditPeempEmpleaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPeempEmpleaViewLink}"/>
+                <br />
+                <h:commandLink action="#{peempEmpleaController.prepareList}" value="#{bundle.EditPeempEmpleaShowAllLink}" immediate="true"/>
+                <br />
 
             </h:form>
         </ui:define>

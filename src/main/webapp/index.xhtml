@@ -12,11 +12,29 @@ and open the template in the editor.
         <h:outputStylesheet name="css/jsfcrud.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <body>
-        <h:form>
-            
+    <body style="
+          padding: 0px;
+          margin: 0px;
+          border:none;
+          width: 100%;
+          ">
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h:form style=" margin: 0 auto;
+                text-align: center;
+                align-content: center;
+                border-radius: 10px;
+                border: 1px solid #666666;
+                width: 250px;
+                ">
+            <br></br>
+            <br></br>
+            <h:graphicImage value="resources/img/user.png" />
             <h:panelGrid columns="2">
-                
+
+
                 <h:outputText value="Usuario"/>
                 <h:inputText id="username" value="#{loginController.username}"/>
 
@@ -27,10 +45,10 @@ and open the template in the editor.
                 <h:commandButton value="Ingresar" action="#{loginController.iniciarSesion()}" />
             </h:panelGrid>
             <h:messages showDetail="true"/>
+            <br></br>
+            <br></br>
         </h:form>
 
-        <br />
-        <h:link outcome="/View/peempEmplea/List" value="Show All PeempEmplea Items"/>
     </body>
 
 </html>

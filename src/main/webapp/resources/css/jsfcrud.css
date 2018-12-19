@@ -1,7 +1,9 @@
 root { 
     display: block;
 }
-
+html, body { 
+ height: 100%;
+}
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: #3a4f54;
@@ -79,4 +81,7 @@ tr.jsfcrud_even_row {
     position: absolute;
     left: 50%;
     top: 50%;
+}
+#content{
+    height: 80%;
 }
