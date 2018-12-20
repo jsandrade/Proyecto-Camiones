@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundleUsuXPerfil.ViewXeuxpUsuperTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundleUsuXPerfil.ViewXeuxpUsuperLabel_xeuxpUsuperPK_xeuxpFecasi}"/>
+                    <h:outputText value="#{xeuxpUsuperController.selected.xeuxpUsuperPK.xeuxpFecasi}" title="#{bundleUsuXPerfil.ViewXeuxpUsuperTitle_xeuxpUsuperPK_xeuxpFecasi}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundleUsuXPerfil.ViewXeuxpUsuperLabel_xeuxpUsuperPK_xeperCodper}"/>
+                    <h:outputText value="#{xeuxpUsuperController.selected.xeuxpUsuperPK.xeperCodper}" title="#{bundleUsuXPerfil.ViewXeuxpUsuperTitle_xeuxpUsuperPK_xeperCodper}"/>
+                    <h:outputText value="#{bundleUsuXPerfil.ViewXeuxpUsuperLabel_xeuxpUsuperPK_peempCodigo}"/>
+                    <h:outputText value="#{xeuxpUsuperController.selected.xeuxpUsuperPK.peempCodigo}" title="#{bundleUsuXPerfil.ViewXeuxpUsuperTitle_xeuxpUsuperPK_peempCodigo}"/>
+                    <h:outputText value="#{bundleUsuXPerfil.ViewXeuxpUsuperLabel_xeuxpFeccam}"/>
+                    <h:outputText value="#{xeuxpUsuperController.selected.xeuxpFeccam}" title="#{bundleUsuXPerfil.ViewXeuxpUsuperTitle_xeuxpFeccam}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{xeuxpUsuperController.destroyAndView}" value="#{bundleUsuXPerfil.ViewXeuxpUsuperDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundleUsuXPerfil.ViewXeuxpUsuperEditLink}"/>
+                <br />
+                <h:commandLink action="#{xeuxpUsuperController.prepareCreate}" value="#{bundleUsuXPerfil.ViewXeuxpUsuperCreateLink}" />
+                <br />
+                <h:commandLink action="#{xeuxpUsuperController.prepareList}" value="#{bundleUsuXPerfil.ViewXeuxpUsuperShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundleUsuXPerfil.ViewXeuxpUsuperIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

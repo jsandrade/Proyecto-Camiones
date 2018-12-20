@@ -90,7 +90,6 @@ public class MenuController implements Serializable {
 
             //Verificar si es padre, busco las ventanas que tiene <1 es padre
             lstVentanas = ventanaEjb.findXOpcion(opt.getXeopcCodopc());
-            System.out.println("Numero: " + lstVentanas.size());
             for (XeopcOpcion subOpt : lstOpciones) {
                 if (subOpt.getXeopcCodopc().equals(opt.getXeopcCodopc())) {
                     if (lstVentanas.size() > 1) {

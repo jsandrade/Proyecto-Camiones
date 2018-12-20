@@ -8,7 +8,7 @@
 
     <ui:composition template="./../../WEB-INF/templates/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.CreatePeempEmpleaTitle}"></h:outputText>
+            <h:outputText value="Crear Nuevo Empleado"></h:outputText>
         </ui:define>
         <ui:define name="content">
             <h:panelGroup id="messagePanel" layout="block">
@@ -94,10 +94,10 @@
                     </p:selectOneMenu>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{peempEmpleaController.create}" value="#{bundle.CreatePeempEmpleaSaveLink}" />
+                <h:commandLink action="#{peempEmpleaController.create}" value="Crear Nuevo Empleado" />
                 <br />
                 <br />
-                <h:commandLink action="#{peempEmpleaController.prepareList}" value="#{bundle.CreatePeempEmpleaShowAllLink}" immediate="true"/>
+                <h:commandLink action="#{peempEmpleaController.prepareList}" value="Mostrar Todos los Empleados" immediate="true"/>
                 <br />
 
             </h:form>

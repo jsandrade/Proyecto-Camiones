@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundleUsuXPerfil.ListXeuxpUsuperTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundleUsuXPerfil.ListXeuxpUsuperEmpty}" rendered="#{xeuxpUsuperController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{xeuxpUsuperController.items.rowCount > 0}">
+                    <h:outputText value="#{xeuxpUsuperController.pagination.pageFirstItem + 1}..#{xeuxpUsuperController.pagination.pageLastItem + 1}/#{xeuxpUsuperController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{xeuxpUsuperController.previous}" value="#{bundleUsuXPerfil.Previous} #{xeuxpUsuperController.pagination.pageSize}" rendered="#{xeuxpUsuperController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{xeuxpUsuperController.next}" value="#{bundleUsuXPerfil.Next} #{xeuxpUsuperController.pagination.pageSize}" rendered="#{xeuxpUsuperController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{xeuxpUsuperController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleUsuXPerfil.ListXeuxpUsuperTitle_xeuxpUsuperPK_xeuxpFecasi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.xeuxpUsuperPK.xeuxpFecasi}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleUsuXPerfil.ListXeuxpUsuperTitle_xeuxpUsuperPK_peempCodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.xeuxpUsuperPK.peempCodigo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleUsuXPerfil.ListXeuxpUsuperTitle_xeuxpUsuperPK_xeperCodper}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.xeuxpUsuperPK.xeperCodper}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleUsuXPerfil.ListXeuxpUsuperTitle_xeuxpFeccam}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.xeuxpFeccam}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{xeuxpUsuperController.prepareView}" value="#{bundleUsuXPerfil.ListXeuxpUsuperViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{xeuxpUsuperController.prepareEdit}" value="#{bundleUsuXPerfil.ListXeuxpUsuperEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{xeuxpUsuperController.destroy}" value="#{bundleUsuXPerfil.ListXeuxpUsuperDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{xeuxpUsuperController.prepareCreate}" value="#{bundleUsuXPerfil.ListXeuxpUsuperCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundleUsuXPerfil.ListXeuxpUsuperIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

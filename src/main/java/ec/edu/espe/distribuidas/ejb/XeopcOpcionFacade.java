@@ -5,7 +5,7 @@
  */
 package ec.edu.espe.distribuidas.ejb;
 
-import ec.edu.espe.distribuidas.model.XeperPerfil;
+import ec.edu.espe.distribuidas.model.XeopcOpcion;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author Juan
  */
 @Stateless
-public class XeperPerfilFacade extends AbstractFacade<XeperPerfil> {
+public class XeopcOpcionFacade extends AbstractFacade<XeopcOpcion> {
 
     @PersistenceContext(unitName = "ec.edu.espe.arquitectura_ProyectoCamiones_war_1PU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class XeperPerfilFacade extends AbstractFacade<XeperPerfil> {
         return em;
     }
 
-    public XeperPerfilFacade() {
-        super(XeperPerfil.class);
+    public XeopcOpcionFacade() {
+        super(XeopcOpcion.class);
     }
     
 }

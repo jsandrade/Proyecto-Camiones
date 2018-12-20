@@ -8,5 +8,21 @@
             <base-name>/Bundle</base-name>
             <var>bundle</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/BundlePerfiles</base-name>
+            <var>bundlePerfiles</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/BundleOpciones</base-name>
+            <var>bundleOpciones</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/BundleUsuXPerfil</base-name>
+            <var>bundleUsuXPerfil</var>
+        </resource-bundle>
     </application>
 </faces-config>

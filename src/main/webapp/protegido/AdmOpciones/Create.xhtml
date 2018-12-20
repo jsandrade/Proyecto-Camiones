@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundleOpciones.CreateXeopcOpcionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundleOpciones.CreateXeopcOpcionLabel_xeopcCodopc}" for="xeopcCodopc" />
+                    <h:inputText id="xeopcCodopc" value="#{xeopcOpcionController.selected.xeopcCodopc}" title="#{bundleOpciones.CreateXeopcOpcionTitle_xeopcCodopc}" required="true" requiredMessage="#{bundleOpciones.CreateXeopcOpcionRequiredMessage_xeopcCodopc}"/>
+                    <h:outputLabel value="#{bundleOpciones.CreateXeopcOpcionLabel_xesisCodsis}" for="xesisCodsis" />
+                    <h:inputText id="xesisCodsis" value="#{xeopcOpcionController.selected.xesisCodsis}" title="#{bundleOpciones.CreateXeopcOpcionTitle_xesisCodsis}" required="true" requiredMessage="#{bundleOpciones.CreateXeopcOpcionRequiredMessage_xesisCodsis}"/>
+                    <h:outputLabel value="#{bundleOpciones.CreateXeopcOpcionLabel_xeopcDescri}" for="xeopcDescri" />
+                    <h:inputText id="xeopcDescri" value="#{xeopcOpcionController.selected.xeopcDescri}" title="#{bundleOpciones.CreateXeopcOpcionTitle_xeopcDescri}" required="true" requiredMessage="#{bundleOpciones.CreateXeopcOpcionRequiredMessage_xeopcDescri}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{xeopcOpcionController.create}" value="#{bundleOpciones.CreateXeopcOpcionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{xeopcOpcionController.prepareList}" value="#{bundleOpciones.CreateXeopcOpcionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundleOpciones.CreateXeopcOpcionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

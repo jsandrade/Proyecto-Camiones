@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundlePerfiles.ViewXeperPerfilTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundlePerfiles.ViewXeperPerfilLabel_xeperCodper}"/>
+                    <h:outputText value="#{xeperPerfilController.selected.xeperCodper}" title="#{bundlePerfiles.ViewXeperPerfilTitle_xeperCodper}"/>
+                    <h:outputText value="#{bundlePerfiles.ViewXeperPerfilLabel_xeperDescri}"/>
+                    <h:outputText value="#{xeperPerfilController.selected.xeperDescri}" title="#{bundlePerfiles.ViewXeperPerfilTitle_xeperDescri}"/>
+                    <h:outputText value="#{bundlePerfiles.ViewXeperPerfilLabel_xeperObserv}"/>
+                    <h:outputText value="#{xeperPerfilController.selected.xeperObserv}" title="#{bundlePerfiles.ViewXeperPerfilTitle_xeperObserv}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{xeperPerfilController.destroyAndView}" value="#{bundlePerfiles.ViewXeperPerfilDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundlePerfiles.ViewXeperPerfilEditLink}"/>
+                <br />
+                <h:commandLink action="#{xeperPerfilController.prepareCreate}" value="#{bundlePerfiles.ViewXeperPerfilCreateLink}" />
+                <br />
+                <h:commandLink action="#{xeperPerfilController.prepareList}" value="#{bundlePerfiles.ViewXeperPerfilShowAllLink}"/>
+                <br />
+                <br />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -31,7 +31,7 @@ public class XeuxpUsuperFacade extends AbstractFacade<XeuxpUsuper> implements Xe
     public XeuxpUsuperFacade() {
         super(XeuxpUsuper.class);
     }
-
+    
     @Override
     public XeuxpUsuper findXUser(XeusuUsuar usuario) {
         XeuxpUsuper usuPerfil=null;
@@ -43,7 +43,7 @@ public class XeuxpUsuperFacade extends AbstractFacade<XeuxpUsuper> implements Xe
             List<XeuxpUsuper> lista = query.getResultList();
             if (!lista.isEmpty()) {
                 usuPerfil = lista.get(0);
-            }
+}
         } catch (Exception e) {
             throw e;
         }

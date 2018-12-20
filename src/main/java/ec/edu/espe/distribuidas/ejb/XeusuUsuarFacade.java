@@ -30,7 +30,7 @@ public class XeusuUsuarFacade extends AbstractFacade<XeusuUsuar> implements Xeus
     public XeusuUsuarFacade() {
         super(XeusuUsuar.class);
     }
-
+    
     @Override
     public XeusuUsuar findXCodPersona(String CodigoPersona) {
         XeusuUsuar usuario=null;         
@@ -42,7 +42,7 @@ public class XeusuUsuarFacade extends AbstractFacade<XeusuUsuar> implements Xeus
             List<XeusuUsuar> lista = query.getResultList();
             if (!lista.isEmpty()) {
                 usuario = lista.get(0);
-            }
+}
         } catch (Exception e) {
             throw e;
         }

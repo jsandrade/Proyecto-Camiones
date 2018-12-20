@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditXeusuUsuarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditXeusuUsuarLabel_peempCodigo}" for="peempCodigo" />
+                    <h:inputText id="peempCodigo" value="#{xeusuUsuarController.selected.peempCodigo}" title="#{bundle.EditXeusuUsuarTitle_peempCodigo}" required="true" requiredMessage="#{bundle.EditXeusuUsuarRequiredMessage_peempCodigo}"/>
+                    <h:outputLabel value="#{bundle.EditXeusuUsuarLabel_xeestCodigo}" for="xeestCodigo" />
+                    <h:inputText id="xeestCodigo" value="#{xeusuUsuarController.selected.xeestCodigo}" title="#{bundle.EditXeusuUsuarTitle_xeestCodigo}" required="true" requiredMessage="#{bundle.EditXeusuUsuarRequiredMessage_xeestCodigo}"/>
+                    <h:outputLabel value="#{bundle.EditXeusuUsuarLabel_xeusuPasswo}" for="xeusuPasswo" />
+                    <h:inputText id="xeusuPasswo" value="#{xeusuUsuarController.selected.xeusuPasswo}" title="#{bundle.EditXeusuUsuarTitle_xeusuPasswo}" required="true" requiredMessage="#{bundle.EditXeusuUsuarRequiredMessage_xeusuPasswo}"/>
+                    <h:outputLabel value="#{bundle.EditXeusuUsuarLabel_xeusuPfirm}" for="xeusuPfirm" />
+                    <h:inputText id="xeusuPfirm" value="#{xeusuUsuarController.selected.xeusuPfirm}" title="#{bundle.EditXeusuUsuarTitle_xeusuPfirm}" required="true" requiredMessage="#{bundle.EditXeusuUsuarRequiredMessage_xeusuPfirm}"/>
+                    
+                    <!-- Fecchas las guarda el sistema
+                    <h:outputLabel value="#{bundle.EditXeusuUsuarLabel_xeusuFeccrea}" for="xeusuFeccrea" />
+                    <h:inputText id="xeusuFeccrea" value="#{xeusuUsuarController.selected.xeusuFeccrea}" title="#{bundle.EditXeusuUsuarTitle_xeusuFeccrea}" required="true" requiredMessage="#{bundle.EditXeusuUsuarRequiredMessage_xeusuFeccrea}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditXeusuUsuarLabel_xeusuFucamb}" for="xeusuFucamb" />
+                    <h:inputText id="xeusuFucamb" value="#{xeusuUsuarController.selected.xeusuFucamb}" title="#{bundle.EditXeusuUsuarTitle_xeusuFucamb}" required="true" requiredMessage="#{bundle.EditXeusuUsuarRequiredMessage_xeusuFucamb}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    -->
+                </h:panelGrid>
+                <h:commandLink action="#{xeusuUsuarController.update}" value="#{bundle.EditXeusuUsuarSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditXeusuUsuarViewLink}"/>
+                <br />
+                <h:commandLink action="#{xeusuUsuarController.prepareList}" value="#{bundle.EditXeusuUsuarShowAllLink}" immediate="true"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

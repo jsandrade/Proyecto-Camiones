@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundleUsuXPerfil.CreateXeuxpUsuperTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <p:growl id="msg" showDetail="true" escape="false" autoUpdate="true" />
+            <h2>Cambio de Perfil de usuarios</h2>
+            <h:panelGrid columns="3" id="pgCuenta">
+                <p:outputLabel for="cmbTipo" value="Tipo de Cuenta a asignar"/>
+                <p:selectOneMenu id="cmbTipo" value="#{usuByPer.tipoUsuario}" style="width:250px">
+                    <f:selectItem itemLabel="Seleccione el tipo de usuario." itemValue="" />
+                    <f:selectItems value="#{usuByPer.mapTipo}" />
+                </p:selectOneMenu>
+                <p:message for="cmbTipo"/>
+            </h:panelGrid>
+
+            <p:pickList id="pickList" value="#{usuByPer.cities}" var="usuarios" itemLabel="#{usuarios}" itemValue="#{usuarios}" />
+
+
+
+        </ui:define>
+    </ui:composition>
+
+</html>
+

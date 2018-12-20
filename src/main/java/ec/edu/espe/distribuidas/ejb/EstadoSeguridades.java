@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author Juan
  */
 @Stateless
-public class XeestEstadoFacade extends AbstractFacade<XeestEstado> implements XeestEstadoFacadeLocal {
+public class EstadoSeguridades extends AbstractFacade<XeestEstado> {
 
     @PersistenceContext(unitName = "ec.edu.espe.arquitectura_ProyectoCamiones_war_1PU")
     private EntityManager em;
@@ -25,7 +25,7 @@ public class XeestEstadoFacade extends AbstractFacade<XeestEstado> implements Xe
         return em;
     }
 
-    public XeestEstadoFacade() {
+    public EstadoSeguridades() {
         super(XeestEstado.class);
     }
     

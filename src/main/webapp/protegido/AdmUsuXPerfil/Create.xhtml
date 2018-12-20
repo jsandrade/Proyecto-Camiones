@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundleUsuXPerfil.CreateXeuxpUsuperTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundleUsuXPerfil.CreateXeuxpUsuperLabel_xeuxpUsuperPK_xeuxpFecasi}" for="xeuxpUsuperPK_xeuxpFecasi" />
+                    <h:inputText id="xeuxpUsuperPK_xeuxpFecasi" value="#{xeuxpUsuperController.selected.xeuxpUsuperPK.xeuxpFecasi}" title="#{bundleUsuXPerfil.CreateXeuxpUsuperTitle_xeuxpUsuperPK_xeuxpFecasi}" required="true" requiredMessage="#{bundleUsuXPerfil.CreateXeuxpUsuperRequiredMessage_xeuxpUsuperPK_xeuxpFecasi}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundleUsuXPerfil.CreateXeuxpUsuperLabel_xeuxpUsuperPK_xeperCodper}" for="xeuxpUsuperPK_xeperCodper" />
+                    <h:inputText id="xeuxpUsuperPK_xeperCodper" value="#{xeuxpUsuperController.selected.xeuxpUsuperPK.xeperCodper}" title="#{bundleUsuXPerfil.CreateXeuxpUsuperTitle_xeuxpUsuperPK_xeperCodper}" required="true" requiredMessage="#{bundleUsuXPerfil.CreateXeuxpUsuperRequiredMessage_xeuxpUsuperPK_xeperCodper}"/>
+                    <h:outputLabel value="#{bundleUsuXPerfil.CreateXeuxpUsuperLabel_xeuxpUsuperPK_peempCodigo}" for="xeuxpUsuperPK_peempCodigo" />
+                    <h:inputText id="xeuxpUsuperPK_peempCodigo" value="#{xeuxpUsuperController.selected.xeuxpUsuperPK.peempCodigo}" title="#{bundleUsuXPerfil.CreateXeuxpUsuperTitle_xeuxpUsuperPK_peempCodigo}" required="true" requiredMessage="#{bundleUsuXPerfil.CreateXeuxpUsuperRequiredMessage_xeuxpUsuperPK_peempCodigo}"/>
+                    <h:outputLabel value="#{bundleUsuXPerfil.CreateXeuxpUsuperLabel_xeuxpFeccam}" for="xeuxpFeccam" />
+                    <h:inputText id="xeuxpFeccam" value="#{xeuxpUsuperController.selected.xeuxpFeccam}" title="#{bundleUsuXPerfil.CreateXeuxpUsuperTitle_xeuxpFeccam}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{xeuxpUsuperController.create}" value="#{bundleUsuXPerfil.CreateXeuxpUsuperSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{xeuxpUsuperController.prepareList}" value="#{bundleUsuXPerfil.CreateXeuxpUsuperShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundleUsuXPerfil.CreateXeuxpUsuperIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
