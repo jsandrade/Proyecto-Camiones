@@ -7,11 +7,19 @@ import ec.edu.espe.distribuidas.ejb.EstadoSeguridades;
 import ec.edu.espe.distribuidas.ejb.PeempEmpleaFacadeLocal;
 import ec.edu.espe.distribuidas.ejb.XeusuUsuarFacade;
 import ec.edu.espe.distribuidas.ejb.XeusuUsuarFacadeLocal;
+import ec.edu.espe.distribuidas.ejb.XeuxpUsuperFacadeLocal;
 import ec.edu.espe.distribuidas.model.PeempEmplea;
 import ec.edu.espe.distribuidas.model.XeestEstado;
+import ec.edu.espe.distribuidas.model.XeuxpUsuper;
+import ec.edu.espe.distribuidas.model.XeuxpUsuperPK;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,17 +45,31 @@ public class XeusuUsuarController implements Serializable {
     private XeusuUsuarFacadeLocal usuEJB;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-    
+
     @EJB
     private EstadoSeguridades estadoEJB;
-    
+
     @EJB
     private PeempEmpleaFacadeLocal empleadoEJB;
     
+    @EJB
+    XeuxpUsuperFacadeLocal usuXPerEJB;
+
     private String Estado;
 
     private Map<String, String> mapEstado;
     private Map<String, String> mapEmpleados;
+
+    private String tipoUsuario;
+    private Map<String, String> mapTipo;
+
+    public Map<String, String> getMapTipo() {
+        return mapTipo;
+    }
+
+    public void setMapTipo(Map<String, String> mapTipo) {
+        this.mapTipo = mapTipo;
+    }
 
     public String getEstado() {
         return Estado;
@@ -55,6 +77,14 @@ public class XeusuUsuarController implements Serializable {
 
     public void setEstado(String Estado) {
         this.Estado = Estado;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 
     public Map<String, String> getMapEstado() {
@@ -72,34 +102,35 @@ public class XeusuUsuarController implements Serializable {
     public void setMapEmpleados(Map<String, String> mapEmpleados) {
         this.mapEmpleados = mapEmpleados;
     }
-    
-    
+
     private void ColocarOpciones() {
         mapEstado = new HashMap<String, String>();
         for (XeestEstado estSeg : estadoEJB.findAll()) {
-            mapEstado.put(estSeg.getXeestDescri(),estSeg.getXeestCodigo());
-            
+            mapEstado.put(estSeg.getXeestDescri(), estSeg.getXeestCodigo());
+
         }
-        mapEmpleados=new HashMap<>();
-        Map<String,String> codUsuarios=new HashMap<String,String>();
-        for (XeusuUsuar auxUsu:usuEJB.findAll()) {
+        mapEmpleados = new HashMap<>();
+        Map<String, String> codUsuarios = new HashMap<String, String>();
+        for (XeusuUsuar auxUsu : usuEJB.findAll()) {
             codUsuarios.put(auxUsu.getPeempCodigo(), auxUsu.getPeempCodigo());
         }
-        List<PeempEmplea> lstEmpleados=empleadoEJB.findAll();
-        System.out.println("Usuarios: "+codUsuarios.size()+"  Empleados: "+lstEmpleados.size());
+        List<PeempEmplea> lstEmpleados = empleadoEJB.findAll();
+        System.out.println("Usuarios: " + codUsuarios.size() + "  Empleados: " + lstEmpleados.size());
         for (int i = 0; i < lstEmpleados.size(); i++) {
-            PeempEmplea E=lstEmpleados.get(i);
+            PeempEmplea E = lstEmpleados.get(i);
             if (!codUsuarios.containsKey(E.getPeempCodigo())) {
-                mapEmpleados.put(E.getPeempNombre()+" "+E.getPeempApelli(), E.getPeempCodigo());
-            }else{
-                System.out.println("Compara con: "+E.getPeempCodigo());
+                mapEmpleados.put(E.getPeempNombre() + " " + E.getPeempApelli(), E.getPeempCodigo());
+            } else {
+                System.out.println("Compara con: " + E.getPeempCodigo());
             }
         }
 
     }
 
     public XeusuUsuarController() {
-        
+        mapTipo = new HashMap<String, String>();
+        mapTipo.put("Administrador", "001");
+        mapTipo.put("Empleado", "002");
     }
 
     public XeusuUsuar getSelected() {
@@ -152,13 +183,48 @@ public class XeusuUsuarController implements Serializable {
 
     public String create() {
         try {
+            current.setXeusuFeccrea(new Date());
+            current.setXeusuFucamb(new Date());
+            current.setXeusuPasswo(encryptPassword(current.getXeusuPasswo()));
             getFacade().create(current);
+            //Asignar Perfil
+            XeuxpUsuper us=new XeuxpUsuper();
+            us.setXeuxpFeccam(new Date());
+            XeuxpUsuperPK up=new XeuxpUsuperPK();
+            up.setPeempCodigo(current.getPeempCodigo());
+            up.setXeperCodper(tipoUsuario);
+            up.setXeuxpFecasi(new Date());
+            us.setXeuxpUsuperPK(up);
+            usuXPerEJB.create(us);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("XeusuUsuarCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
+    }
+
+    private static String encryptPassword(String password) {
+        String sha1 = "";
+        try {
+            MessageDigest crypt = MessageDigest.getInstance("SHA-1");
+            crypt.reset();
+            crypt.update(password.getBytes("UTF-8"));
+            sha1 = byteToHex(crypt.digest());
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+        }
+        return sha1;
+    }
+
+    private static String byteToHex(final byte[] hash) {
+        String result;
+        try (Formatter formatter = new Formatter()) {
+            for (byte b : hash) {
+                formatter.format("%02x", b);
+            }
+            result = formatter.toString();
+        }
+        return result;
     }
 
     public String prepareEdit() {

@@ -50,7 +50,7 @@ public class XeusuUsuar implements Serializable {
     private Character xeestCodigo;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 8)
+    @Size(min = 1, max = 100)
     @Column(name = "XEUSU_PASSWO")
     private String xeusuPasswo;
     @Basic(optional = false)
