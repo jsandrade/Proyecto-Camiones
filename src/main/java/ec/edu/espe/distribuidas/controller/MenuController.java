@@ -45,6 +45,8 @@ public class MenuController implements Serializable {
     private List<XeopeOperfi> lstOpcPerfil;
     private List<XevenVentan> lstVentanas;
     private List<XeopcOpcion> lstOpciones;
+    private String NombreUsuario;
+    private String NombreCompleto;
 
     private MenuModel model;
 
@@ -55,6 +57,18 @@ public class MenuController implements Serializable {
         this.establecerPermisos();
 
     }
+
+    public String getNombreUsuario() {
+        return NombreUsuario;
+    }
+
+    public String getNombreCompleto() {
+        return NombreCompleto;
+    }
+
+
+
+
 
     public MenuModel getModel() {
         return model;
@@ -73,7 +87,9 @@ public class MenuController implements Serializable {
 
         FacesContext context = FacesContext.getCurrentInstance();
         us = (XeusuUsuar) context.getExternalContext().getSessionMap().get("usuario");
-
+        NombreCompleto= (String) context.getExternalContext().getSessionMap().get("Nombre");
+        NombreUsuario=us.getXeusuPfirm();
+        NombreUsuario=NombreCompleto;
         usPerfil = usuPerfilEjb.findXUser(us);
         if (usPerfil != null) {
             lstOpcPerfil = opcPerfilEJB.findXPerfil(usPerfil.getXeuxpUsuperPK().getXeperCodper());

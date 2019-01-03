@@ -30,10 +30,10 @@ public class XeusuUsuarFacade extends AbstractFacade<XeusuUsuar> implements Xeus
     public XeusuUsuarFacade() {
         super(XeusuUsuar.class);
     }
-    
+
     @Override
     public XeusuUsuar findXCodPersona(String CodigoPersona) {
-        XeusuUsuar usuario=null;         
+        XeusuUsuar usuario = null;
         String consulta;
         try {
             consulta = "FROM XeusuUsuar e WHERE e.peempCodigo =?1";
@@ -42,12 +42,31 @@ public class XeusuUsuarFacade extends AbstractFacade<XeusuUsuar> implements Xeus
             List<XeusuUsuar> lista = query.getResultList();
             if (!lista.isEmpty()) {
                 usuario = lista.get(0);
-}
+            }
         } catch (Exception e) {
             throw e;
         }
 
         return usuario;
     }
-    
+
+    @Override
+    public XeusuUsuar findXPieFirma(String PieFirma) {
+        XeusuUsuar usuario = null;
+        String consulta;
+        try {
+            consulta = "FROM XeusuUsuar e WHERE e.xeusuPfirm =?1";
+            Query query = em.createQuery(consulta);
+            query.setParameter(1, PieFirma);
+            List<XeusuUsuar> lista = query.getResultList();
+            if (!lista.isEmpty()) {
+                usuario = lista.get(0);
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return usuario;
+    }
+
 }

@@ -52,4 +52,24 @@ public class PeempEmpleaFacade extends AbstractFacade<PeempEmplea> implements Pe
         return empleado;
     }
 
+    @Override
+    public PeempEmplea findXCodEmpleado(String codigoEmpleado) {
+         PeempEmplea empleado=null;
+
+        String consulta;
+        try {
+            consulta = "FROM PeempEmplea e WHERE e.peempCodigo  =?1";
+            Query query = em.createQuery(consulta);
+            query.setParameter(1, codigoEmpleado);
+            List<PeempEmplea> lista = query.getResultList();
+            if (!lista.isEmpty()) {
+                empleado = lista.get(0);
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return empleado;
+    }
+
 }

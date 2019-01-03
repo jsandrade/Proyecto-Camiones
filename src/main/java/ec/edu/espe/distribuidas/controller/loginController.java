@@ -58,24 +58,19 @@ public class loginController implements Serializable {
         PeempEmplea empleado;
         String redireccion = null;
         try {
-            empleado = empleadoEJB.findXCedula(username);
-            if (empleado != null) {
+            XeusuUsuar usuario;
+            usuario = usuarioEJB.findXPieFirma(username);
+            if (usuario != null) {
                 //Verificar Contrasenia
-                XeusuUsuar usuario;
-                usuario = usuarioEJB.findXCodPersona(empleado.getPeempCodigo());
-                if (usuario != null) {
-                    if (encryptPassword(password).equals(usuario.getXeusuPasswo())) {
-                        //Almacenar en la sesion de JSF
-                        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("Nombre", empleado.getPeempNombre() + " " + empleado.getPeempApelli());
-                        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
-                        redireccion = "protegido/Bienvenida/principal?faces-redirect=true";
-                    }else{
-                        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Contraseña incorrecta."));
-                        password="";
-                    }
-
+                if (encryptPassword(password).equals(usuario.getXeusuPasswo())) {
+                    //Almacenar en la sesion de JSF
+                    empleado = empleadoEJB.findXCodEmpleado(usuario.getPeempCodigo());
+                    FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("Nombre", empleado.getPeempNombre() + " " + empleado.getPeempApelli());
+                    FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
+                    redireccion = "protegido/Bienvenida/principal?faces-redirect=true";
                 } else {
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Todavía no a sido asignado un usuario a su cuenta."));
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Contraseña incorrecta."));
+                    password = "";
                 }
 
             } else {
@@ -87,6 +82,40 @@ public class loginController implements Serializable {
         }
         return redireccion;
     }
+    //Metodo login con cedula
+//     public String iniciarSesion() {
+//        PeempEmplea empleado;
+//        String redireccion = null;
+//        try {
+//            empleado = empleadoEJB.findXCedula(username);
+//            if (empleado != null) {
+//                //Verificar Contrasenia
+//                XeusuUsuar usuario;
+//                usuario = usuarioEJB.findXCodPersona(empleado.getPeempCodigo());
+//                if (usuario != null) {
+//                    if (encryptPassword(password).equals(usuario.getXeusuPasswo())) {
+//                        //Almacenar en la sesion de JSF
+//                        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("Nombre", empleado.getPeempNombre() + " " + empleado.getPeempApelli());
+//                        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
+//                        redireccion = "protegido/Bienvenida/principal?faces-redirect=true";
+//                    }else{
+//                        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Contraseña incorrecta."));
+//                        password="";
+//                    }
+//
+//                } else {
+//                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Todavía no a sido asignado un usuario a su cuenta."));
+//                }
+//
+//            } else {
+//                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario incorrecto"));
+//            }
+//
+//        } catch (Exception e) {
+//            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Problemas de conexion"));
+//        }
+//        return redireccion;
+//    }
 
     private static String encryptPassword(String password) {
         String sha1 = "";

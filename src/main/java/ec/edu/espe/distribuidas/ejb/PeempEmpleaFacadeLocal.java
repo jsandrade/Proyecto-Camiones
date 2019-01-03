@@ -32,4 +32,6 @@ public interface PeempEmpleaFacadeLocal {
     
     PeempEmplea findXCedula(String cedula);
     
+    PeempEmplea findXCodEmpleado(String codigoEmpleado);
+    
 }

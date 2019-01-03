@@ -32,6 +32,8 @@ public interface XeusuUsuarFacadeLocal {
     
     XeusuUsuar findXCodPersona(String CodigoPersona);
     
+    XeusuUsuar findXPieFirma(String CodigoPersona);
+    
    
     
 }
